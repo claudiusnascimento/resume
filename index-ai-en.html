@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume - Claudius Nascimento</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            color: #2c3e50;
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin: 25px 0 10px 0;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #8e8e8e;
+        }
+
+        .resume-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .subtitle {
+            color: #27ae60;
+            margin-bottom: 25px;
+            font-size: 1.2rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-item i {
+            color: #27ae60;
+            width: 20px;
+        }
+
+        .job-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .company {
+            color: #27ae60;
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        .date {
+            font-size: 0.75rem;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 4px;
+            font-size: 14px;
+        }
+
+        .tech span {
+            background-color: #ecf0f1;
+            color: #2c3e50;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-right: 6px;
+            display: inline-block;
+            margin-bottom: 6px;
+        }
+
+        .tech-label {
+            font-size: 12px;
+            font-weight: bold;
+            color: #7f8c8d;
+            margin: 10px 0 4px 0;
+        }
+
+        .divider-1 {
+            border-top: 1px dashed #ccc;
+            margin: 20px 0;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .summary p {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        @media print {
+            .experience-item {
+                break-inside: avoid;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .resume-container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <h1>CLAUDIUS NASCIMENTO</h1>
+        <h3 class="subtitle">Full Stack Software Engineer · AI-Native / Spec-Driven Development</h3>
+
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <span>claudiusnascimento@gmail.com</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-link"></i>
+                <span>https://linkedin.com/in/claudiusnascimento</span>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Cascavel - PR</span>
+            </div>
+        </div>
+
+        <section class="summary">
+            <h2>SUMMARY</h2>
+            <p>Software engineer with over 10 years of experience in web development, focused on backend, working across every project phase: from concept to deployment.</p>
+            <p>Today I work in an <strong>AI-native, spec-first</strong> workflow: the specification is the source of truth and AI agents drive the delivery cycle (brainstorm → spec → plan → implementation → review → CI) under <strong>deterministic quality gates</strong>: TDD, Given/When/Then acceptance criteria, code review and CI pipelines. I use the <strong>superpowers</strong> framework on top of Claude Code and wrote my own SDD skills so that agent execution is predictable and auditable.</p>
+            <p>I treat <strong>context engineering as infrastructure</strong>: architectural rules, documentation and decisions are versioned in the repository for agents to consume. Experience with distributed systems (queues, asynchronous jobs, multi-tenant) and CI/CD with GitHub Actions.</p>
+        </section>
+
+        <section>
+            <h2>AI-NATIVE ENGINEERING (SDD)</h2>
+            <ul>
+                <li><strong>End-to-end spec-first workflow:</strong> every deliverable starts as a spec (scope, out of scope, decisions and Given/When/Then criteria), becomes a plan of verifiable steps, and only then is executed by agents. Specs, plans and reviews are versioned alongside the code.</li>
+                <li><strong>Deterministic execution on top of LLMs:</strong> I created a skill (<em>sdd-plan-runner</em>) that executes plans step by step and blocks progress on a failing test. It forbids loosening a criterion or a test just to "make it pass", has mandatory stop points for human decisions (human-in-the-loop), and resumes partially executed plans.</li>
+                <li><strong>Agent orchestration:</strong> per-task subagents (implementation, code review, verification before completion), parallel agents for independent tasks and isolation through <em>git worktrees</em>.</li>
+                <li><strong>Context engineering:</strong> AGENTS.md/CLAUDE.md per repository with non-negotiable architectural rules (repository pattern, auditing, ACL, i18n, UI standards) and a context documentation base that works as the project's memory. This keeps agent-generated code consistent across features and across developers.</li>
+                <li><strong>Quality as a gate, not a stage:</strong> unit, integration and e2e tests required for every feature, code review and blocking CI before merge and deploy.</li>
+            </ul>
+            <div class="tech">
+                <span>Claude Code</span> <span>superpowers</span> <span>Cursor</span> <span>Spec-Driven Development</span> <span>Context Engineering</span> <span>Prompt Engineering</span> <span>Multi-agent workflows</span> <span>TDD</span>
+            </div>
+        </section>
+
+        <section>
+            <h2>EXPERIENCE</h2>
+
+            <div class="experience-item">
+                <div class="job-title">
+                <h3>Full Stack Software Engineer · AI-Native</h3>
+                </div>
+
+                <h3 class="company">Stoix (https://stoix.dev)</h3>
+
+                <div class="date">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>06/2026 - present</span>
+                </div>
+
+                <ul>
+                    <li><strong>Logtech:</strong> multi-tenant corporate platform for logistics and vehicle tracking, built by a team of 3 devs entirely in a spec-first workflow with AI agents. Over 2,300 commits in 3 months, with 48 specs and 81 plans versioned.</li>
+                    <li>Modular architecture in NestJS with PostgreSQL/PostGIS, asynchronous jobs via Redis + BullMQ/OCI Queue, authentication with Keycloak (JWT/RBAC) and an audit log of critical actions.</li>
+                    <li>CI/CD pipelines on GitHub Actions (unit, integration and e2e with Jest, Vitest and Playwright; deploy to staging and production) acting as a quality gate for agent-produced code.</li>
+                    <li>Writing and maintaining the project's AGENTS.md, which encodes architecture decisions as context for the agents and keeps the generated code consistent.</li>
+                    <li><strong>Tecnorisk SSO Portal:</strong> feature development (vehicle and device status, trip forecasting) from specs and plans in the superpowers workflow. Laravel 12 + React/TypeScript.</li>
+                </ul>
+
+                <div class="tech">
+                    <span>TypeScript</span> <span>NestJS</span> <span>React</span> <span>Vite</span> <span>PostgreSQL</span> <span>PostGIS</span> <span>Redis</span> <span>BullMQ</span> <span>Keycloak</span> <span>GitHub Actions</span> <span>Jest</span> <span>Vitest</span> <span>Playwright</span> <span>Docker</span> <span>Laravel</span>
+                </div>
+            </div>
+
+            <div class="divider-1"></div>
+
+            <div class="experience-item">
+                <div class="job-title">
+                <h3>Founder and Engineer · Solo project</h3>
+                </div>
+
+                <h3 class="company">Need Alert</h3>
+
+                <div class="date">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>09/2026 - present</span>
+                </div>
+
+                <ul>
+                    <li>Multi-tenant platform for waitlists and on-demand alerts ("notify me when it's back"). Conceived and built solo, from product to deployment, entirely in SDD with agents: over 650 commits in the first month and hundreds of specs and plans versioned per domain (foundation, trigger events, credits and billing, real time, search, PWA).</li>
+                    <li>Complete product on four fronts: REST API, web dashboard (SPA/PWA), native iOS/Android app (in development) and public API documentation (pt-BR/en).</li>
+                    <li>Spec-based PR flow, with agent code review built in before merge.</li>
+                    <li>Laravel 13 (REST API) + Vue 3/TypeScript, PostgreSQL/PostGIS, Redis, WebSockets (Reverb) and push via Firebase Cloud Messaging; React Native/Expo app; docs on Mintlify.</li>
+                </ul>
+
+                <div class="tech">
+                    <span>PHP</span> <span>Laravel</span> <span>Vue JS</span> <span>TypeScript</span> <span>React Native</span> <span>Expo</span> <span>PostgreSQL</span> <span>PostGIS</span> <span>Redis</span> <span>WebSockets</span> <span>Firebase (FCM)</span> <span>Playwright</span> <span>Vitest</span> <span>Mintlify</span>
+                </div>
+            </div>
+
+            <div class="divider-1"></div>
+
+            <div class="experience-item">
+                <div class="job-title">
+                <h3>Full Stack Developer</h3>
+                </div>
+
+                <h3 class="company">JT Consulting Solutions</h3>
+
+                <div class="date">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>01/2024 - 04/2026</span>
+                </div>
+
+                <ul>
+                    <li>Development and maintenance of online lending fintechs: Stepping Stone Loans (https://steppingstoneloans.com/) and MoneyClub (https://moneyclub.net/).</li>
+                    <li>Implementation of a scheduled notification system (Scheduler) driven by loan status.</li>
+                    <li>Development of automated marketing campaigns and the transactional email delivery system.</li>
+                    <li>Laravel Nova customization for admin panels and data management.</li>
+                    <li>Automated testing with PHPUnit and Cypress.</li>
+                </ul>
+
+                <div class="tech">
+                    <span>PHP</span> <span>Laravel</span> <span>Laravel Nova</span> <span>MySQL</span> <span>Tailwind CSS</span> <span>Vue JS</span> <span>Docker</span> <span>Cypress JS</span> <span>PHPUnit</span> <span>Git</span>
+                </div>
+            </div>
+
+            <div class="divider-1"></div>
+
+            <div class="experience-item">
+                <div class="job-title">
+                <h3>Full Stack Developer</h3>
+                </div>
+
+                <h3 class="company">Stoix (https://stoix.dev)</h3>
+
+                <div class="date">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>02/2022 - 01/2024</span>
+                </div>
+
+                <ul>
+                    <li>Sales recovery funnel via SMS (https://www.smsfunnel.com.br/).</li>
+                    <li>Time-study system to calculate cycle time in truck body production (RANDON).</li>
+                    <li>TMS (Transport Management System) for a vehicle transport company: cargo management, vehicle checklist at pickup and delivery, mileage, fueling and yard control (https://hgtransportesrs.com.br/).</li>
+                </ul>
+
+                <div class="tech">
+                    <span>PHP</span> <span>Laravel</span> <span>MySQL</span> <span>JavaScript</span> <span>Vue JS</span> <span>Docker</span> <span>Git</span>
+                </div>
+            </div>
+
+            <div class="divider-1"></div>
+
+            <div class="experience-item">
+                <div class="job-title">
+                <h3>Full Stack Developer</h3>
+                </div>
+
+                <h3 class="company">Infracommerce (https://ri.infracommerce.com.br/)</h3>
+
+                <div class="date">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>12/2020 - 02/2022</span>
+                </div>
+
+                <ul>
+                    <li>Optimization and maintenance of online stores, focused on problem solving and new features.</li>
+                    <li>Took part in the launch of Infracommerce's first international store, including the "Cash on Delivery" payment method (widely used in Mexico).</li>
+                </ul>
+
+                <div class="tech">
+                    <span>PHP</span> <span>MySQL</span> <span>JavaScript</span> <span>jQuery</span>
+                </div>
+            </div>
+
+            <div class="divider-1"></div>
+
+            <div class="experience-item">
+                <div class="job-title">
+                <h3>Full Stack Developer</h3>
+                </div>
+
+                <h3 class="company">UpLexis (https://uplexis.com.br)</h3>
+
+                <div class="date">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>05/2019 - 11/2020</span>
+                    &nbsp;&nbsp;
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>São Paulo, Brazil</span>
+                </div>
+
+                <ul>
+                    <li>Diagnosis and fixing of issues in critical systems, focused on the back end.</li>
+                    <li>Moved to the Web Crawlers team after standing out technically.</li>
+                </ul>
+
+                <div class="tech">
+                    <span>PHP</span> <span>Laravel</span> <span>PostgreSQL</span> <span>JavaScript</span> <span>Angular</span>
+                </div>
+            </div>
+
+            <div class="divider-1"></div>
+
+            <div class="experience-item">
+                <div class="job-title">
+                <h3>Full Stack Developer</h3>
+                </div>
+
+                <h3 class="company">Medialine - Digital Solutions (https://medialine.com.br/)</h3>
+
+                <div class="date">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>04/2015 - 04/2019</span>
+                    &nbsp;&nbsp;
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Porto Alegre, Brazil</span>
+                </div>
+
+                <ul>
+                    <li>Full-stack development of complete applications, from concept to implementation.</li>
+                    <li>Continuous evolution of the in-house framework architecture; authentication with access control (ACL).</li>
+                </ul>
+
+                <div class="tech">
+                    <span>PHP</span> <span>Laravel</span> <span>MySQL</span> <span>Wordpress</span> <span>JavaScript</span>
+                </div>
+            </div>
+
+            <div class="divider-1"></div>
+
+            <div class="experience-item">
+                <div class="job-title">
+                <h3>Project Manager (PHP team lead)</h3>
+                </div>
+
+                <h3 class="company">Reweb (https://www.reweb.com.br/)</h3>
+
+                <div class="date">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>08/2014 - 02/2015</span>
+                    &nbsp;&nbsp;
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Porto Alegre, Brazil</span>
+                </div>
+
+                <ul>
+                    <li>Led the PHP team in application development.</li>
+                    <li>Management of deadlines and of the quality of the delivered code.</li>
+                    <li>Direct client interface for requirements gathering and expectation alignment.</li>
+                </ul>
+            </div>
+
+            <div class="divider-1"></div>
+
+            <div class="experience-item">
+                <div class="job-title">
+                <h3>PHP Developer</h3>
+                </div>
+
+                <h3 class="company">Reweb (https://www.reweb.com.br/)</h3>
+
+                <div class="date">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>02/2014 - 08/2014</span>
+                    &nbsp;&nbsp;
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Porto Alegre, Brazil</span>
+                </div>
+
+                <ul>
+                    <li>Architecture and development of PHP backends for multiple applications.</li>
+                </ul>
+            </div>
+
+            <div class="divider-1"></div>
+
+            <div class="experience-item">
+                <div class="job-title">
+                <h3>ActionScript Developer</h3>
+                </div>
+
+                <h3 class="company">Click Isobar Agency</h3>
+
+                <div class="date">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>08/2010 - 08/2012</span>
+                </div>
+
+                <ul>
+                    <li>Hotsites, interactive kiosks and games for brands such as Sadia, Fiat, Antarctica, Sky and Nívea.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>PERSONAL PROJECTS (AI-NATIVE)</h2>
+
+            <div class="experience-item">
+                <div class="job-title">
+                <h3>SDD skills for coding agents</h3>
+                </div>
+                <ul>
+                    <li><em>sdd-workflow</em> (creates a spec and plan from a request) and <em>sdd-plan-runner</em> (executes the plan with TDD, stop gates and execution resumption). Today they are the standard way of working across my projects.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>EDUCATION</h2>
+
+            <div class="experience-item">
+                <div class="job-title">
+                <h3>Technical Course in Computing and Programming</h3>
+                </div>
+
+                <h3 class="company">Escola Alcides Maia</h3>
+
+                <div class="date">
+                    <i class="far fa-calendar-alt"></i>
+                    <span>01/2006 - 12/2007</span>
+                    &nbsp;&nbsp;
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Porto Alegre, Brazil</span>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>LANGUAGES</h2>
+
+            <div class="tech">
+                <span>English Intermediate/Advanced</span>
+            </div>
+        </section>
+
+        <section>
+            <h2>SKILLS</h2>
+
+            <p class="tech-label">AI / AI-native Engineering</p>
+            <div class="tech">
+                <span>Claude Code</span> <span>superpowers</span> <span>Cursor</span> <span>Spec-Driven Development</span> <span>Context Engineering</span> <span>Prompt Engineering</span> <span>Multi-agent workflows</span>
+            </div>
+
+            <p class="tech-label">Backend and architecture</p>
+            <div class="tech">
+                <span>TypeScript</span> <span>NestJS</span> <span>PHP</span> <span>Laravel</span> <span>REST APIs</span> <span>Queues and jobs (BullMQ, Redis)</span> <span>Multi-tenant</span> <span>Keycloak / RBAC</span> <span>PostgreSQL</span> <span>PostGIS</span> <span>MySQL</span>
+            </div>
+
+            <p class="tech-label">Quality and CI/CD</p>
+            <div class="tech">
+                <span>TDD</span> <span>Jest</span> <span>Vitest</span> <span>Playwright</span> <span>PHPUnit</span> <span>Pest</span> <span>Cypress</span> <span>GitHub Actions</span> <span>Docker</span> <span>Git</span>
+            </div>
+
+            <p class="tech-label">Frontend</p>
+            <div class="tech">
+                <span>React</span> <span>React Native / Expo</span> <span>Vue JS</span> <span>Tailwind CSS</span> <span>shadcn/ui</span> <span>JavaScript</span>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
